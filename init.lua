@@ -28,14 +28,14 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-local node_bin = "/Users/ltorba/.nvm/versions/node/v20.10.0/bin"
+local node_bin = "~/.nvm/versions/node/v20.10.0/bin"
 -- vim.g.node_host_prog = node_bin .. "/node"
 
 vim.cmd("let $PATH = '" .. node_bin .. ":' . $PATH")
 
 
-vim.g.python3_host_prog = "/Users/ltorba/.pyenv/versions/neovim2/bin/python"
-vim.g.python3_host_prog = "/Users/ltorba/.pyenv/versions/neovim3/bin/python"
+vim.g.python3_host_prog = "~/.pyenv/versions/neovim3/bin/python"
+vim.g.python2_host_prog = "~/.pyenv/versions/neovim2/bin/python"
 
 -- }}}
 
@@ -80,7 +80,7 @@ Plug('tpope/vim-commentary')
 Plug('christoomey/vim-tmux-navigator')
 Plug('nvim-lua/plenary.nvim')
 
-Plug('vim-scripts/ShowMarks');
+-- Plug('vim-scripts/ShowMarks');
 -- }}}
 Plug.ends()
 -- }}}
