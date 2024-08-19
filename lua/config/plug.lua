@@ -1,13 +1,13 @@
 local Plug = {
   begin = vim.fn['plug#begin'],
 
-  ends = function () 
+  ends = function ()
     vim.fn['plug#end']()
   end
 }
 
 local meta = {
-  __call = function (self, repo, opts)
+  __call = function (_, repo, opts)
     opts = opts or vim.empty_dict()
 
     opts['do'] = opts.run

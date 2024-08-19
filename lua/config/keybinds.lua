@@ -1,19 +1,9 @@
-local noremap = function (lhs, rhs)
-  --vim.keymap.set
-  vim.api.nvim_set_keymap('n', lhs, rhs, {
-      noremap = true,
-      silent = true,
-      nowait = true
-    })
-end
+local U = require 'utils.keybind'
 
-noremap ('<leader>S',  ':set invspell<CR>')
-noremap ('<leader>h',  ':set hlsearch!<CR>')
-noremap ('<leader>nf', ':NvimTreeFindFile<CR>')
-noremap ('<C-p>b', ':FzfLua buffers<CR>')
-noremap ('<C-p>', ':FzfLua files<CR>')
-noremap ('<C-p>g', ':FzfLua git_files<CR>')
--- noremap ('<C-p>h', ':History<CR>')
--- noremap ('<C-p>f', ':Rg<CR>')
-noremap ('<C-space>', ':lua vim.lsp.buf.hover()<CR>')
+U.noremap ('<leader>S',  ':set invspell<CR>')
+U.noremap ('<leader>h',  ':set hlsearch!<CR>')
+U.noremap ('<leader>nf', ':NvimTreeFindFile<CR>')
+
+-- drop?
+U.noremap ('<C-space>',  ':lua vim.lsp.buf.hover()<CR>')
 

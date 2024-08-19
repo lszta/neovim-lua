@@ -1,36 +1,37 @@
-local api = require "nvim-tree.api"
+local A = require 'nvim-tree.api'
+local U = require 'utils.keybind'
 
-local function opts(desc)
+local opts = function (desc)
   return {
-    desc = "nvim-tree:" .. desc,
+    desc = 'nvim-tree:' .. desc,
     noremap = true,
     silent = true,
     nowait = true
   }
 end
 
-local function on_tree_attach(bufno)
-  
-  api.config.mappings.default_on_attach(bufno)
-
-  local opts2 = function (desc)
-          return {
-            desc = "nvim-tree:" .. desc,
-            noremap = true,
-            silent = true,
-            nowait = true,
-            buffer = bufno,
-          }
+local opts_buff = function(buffer)
+  return function (desc)
+    local options = vim.tbl_extend('force', opts(desc), {
+      buffer = buffer
+    })
+    return options
   end
-
-  vim.keymap.set('n', '<S-r>',  api.tree.reload,                opts2('reload'))
-  vim.keymap.set('n', 'h',      api.node.open.horizontal,       opts2('open-horizontal'))
-  vim.keymap.set('n', 's',      api.node.open.vertical,         opts2('open-horizontal'))
 end
 
-require("nvim-tree").setup {
+local function on_tree_attach(bufno)
+  local options = opts_buff(bufno)
+
+  A.config.mappings.default_on_attach(bufno)
+
+  U.noremap('<S-r>',  A.tree.reload,                options('reload'))
+  U.noremap('h',      A.node.open.horizontal,       options('open-horizontal'))
+  U.noremap('s',      A.node.open.vertical,         options('open-horizontal'))
+end
+
+require('nvim-tree').setup {
   sort = {
-    sorter = "case_sensitive",
+    sorter = 'case_sensitive',
   },
   view = {
     width = 35,
@@ -48,7 +49,6 @@ require("nvim-tree").setup {
   }
 }
 
-
-vim.keymap.set('n', '<leader>f', api.tree.find_file, opts('find_file'))
-vim.keymap.set('n', '<leader>n', api.tree.toggle, opts('toggle'))
+U.noremap('<leader>f', A.tree.find_file, opts('find_file'))
+U.noremap('<leader>n', A.tree.toggle, opts('toggle'))
 
