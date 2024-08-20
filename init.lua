@@ -22,6 +22,7 @@ vim.cmd [[
         set exrc
         set secure
         set cursorline
+        colorscheme habamax
 ]]
 
 vim.g.loaded_ruby_provider = 0
@@ -30,8 +31,6 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 local node_bin = "~/.nvm/versions/node/v20.10.0/bin"
-
--- vim.cmd("let $PATH = '" .. node_bin .. ":' . $PATH")
 
 vim.g.node_bin_dir = node_bin
 
@@ -45,10 +44,9 @@ local Plug = require 'config.plug'
 Plug.begin('~/.nvim/nvim/plugged')
 -- UI {{{
 
-	-- themes {{
+-- themes {{
+-- keep gruvbox as always working theme
 Plug('morhetz/gruvbox')
-Plug('rktjmp/lush.nvim')
-Plug('ntk148v/habamax.nvim')
  -- }}}
 
 
@@ -101,10 +99,6 @@ Plug('folke/neodev.nvim')
 -- }}}
 Plug.ends()
 -- }}}
-
-vim.cmd([[ 
-        colorscheme habamax.nvim
-]])
 
 -- Airline {{{
 vim.g.airline_powerline_fonts = 1
