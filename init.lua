@@ -31,8 +31,9 @@ vim.g.loaded_netrwPlugin = 1
 
 local node_bin = "~/.nvm/versions/node/v20.10.0/bin"
 
-vim.cmd("let $PATH = '" .. node_bin .. ":' . $PATH")
+-- vim.cmd("let $PATH = '" .. node_bin .. ":' . $PATH")
 
+vim.g.node_bin_dir = node_bin
 
 vim.g.python3_host_prog = "~/.pyenv/versions/neovim3/bin/python"
 vim.g.python2_host_prog = "~/.pyenv/versions/neovim2/bin/python"
@@ -95,7 +96,7 @@ Plug('nvim-lua/plenary.nvim')
 -- Own things {{{
 Plug('folke/neodev.nvim')
 
-Plug('/projects/lszta/rg.nvim')
+-- Plug('/projects/lszta/rg.nvim')
 
 -- }}}
 Plug.ends()
@@ -120,7 +121,7 @@ require 'config.lsp'
 require 'config.efm'
 -- }}}
 --
-require 'rg'.setup({})
+-- require 'rg'.setup({})
 
 -- disable deprecations
 vim.deprecate = function () end

@@ -87,6 +87,17 @@ lspconfig.pyright.setup {
   }
 }
 
+lspconfig.tsserver.setup {
+  capabilities = capabilities,
+  cmd = {
+    P.expand(vim.g.node_bin_dir) .. "/typescript-language-server",
+    '--stdio'
+  },
+  cmd_env = {
+    PATH = P.expand(vim.g.node_bin_dir) .. ":" .. os.getenv("PATH"),
+  },
+}
+
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
