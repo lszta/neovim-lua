@@ -37,6 +37,10 @@ cmp.setup({
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+local enable_inlay_hints = function(_, bufnr)
+  vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+end
+
 local servers = {
   "tsserver",
   "gopls",
@@ -115,6 +119,7 @@ lspconfig.lua_ls.setup({
 
 lspconfig.pyright.setup({
   capabilities = capabilities,
+  on_attach = enable_inlay_hints,
   cmd = {
     P.expand(P.dirname(vim.g.python3_host_prog) .. "/pyright-langserver"),
     "--stdio",
@@ -129,6 +134,29 @@ lspconfig.tsserver.setup({
   },
   cmd_env = {
     PATH = P.expand(vim.g.node_bin_dir) .. ":" .. os.getenv("PATH"),
+  },
+})
+
+lspconfig.rust_analyzer.setup({
+  capabilities = capabilities,
+  on_attach = enable_inlay_hints,
+  settings = {
+    ["rust-analyzer"] = {
+      imports = {
+        granularity = {
+          group = "module",
+        },
+        prefix = "self",
+      },
+      cargo = {
+        buildScripts = {
+          enable = true,
+        },
+      },
+      procMacro = {
+        enable = true,
+      },
+    },
   },
 })
 
