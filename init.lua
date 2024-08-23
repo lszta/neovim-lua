@@ -1,7 +1,7 @@
 -- vim: foldmethod=marker
 --
 -- configure globals {{{
-vim.cmd [[
+vim.cmd([[
         set nocompatible
         filetype plugin on
         filetype plugin indent on
@@ -23,7 +23,7 @@ vim.cmd [[
         set secure
         set cursorline
         colorscheme habamax
-]]
+]])
 
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
@@ -40,59 +40,58 @@ vim.g.python2_host_prog = "~/.pyenv/versions/neovim2/bin/python"
 -- }}}
 
 -- install packages {{{
-local Plug = require 'config.plug'
-Plug.begin('~/.nvim/nvim/plugged')
+local Plug = require("config.plug")
+Plug.begin("~/.nvim/nvim/plugged")
 -- UI {{{
 
--- themes {{
+-- themes {{{
 -- keep gruvbox as always working theme
-Plug('morhetz/gruvbox')
- -- }}}
+Plug("morhetz/gruvbox")
+-- }}}
+Plug("nvim-lualine/lualine.nvim")
+-- }}}
 
-
-Plug('vim-airline/vim-airline')
-Plug('ryanoasis/vim-devicons')
-
-Plug('nvim-tree/nvim-tree.lua')
-Plug('nvim-tree/nvim-web-devicons')
+Plug("ryanoasis/vim-devicons")
+Plug("nvim-tree/nvim-tree.lua")
+Plug("nvim-tree/nvim-web-devicons")
 
 -- LSP {{{
-Plug('neovim/nvim-lspconfig')
-Plug('hrsh7th/nvim-cmp')
-Plug('hrsh7th/cmp-nvim-lsp')
-Plug('creativenull/efmls-configs-nvim')
+Plug("neovim/nvim-lspconfig")
+Plug("hrsh7th/nvim-cmp")
+Plug("hrsh7th/cmp-nvim-lsp")
+Plug("creativenull/efmls-configs-nvim")
 -- }}}
 
 -- Navigation & flow {{{
-Plug('editorconfig/editorconfig-vim')
-Plug('ibhagwan/fzf-lua', { branch = 'main' })
+Plug("editorconfig/editorconfig-vim")
+Plug("ibhagwan/fzf-lua", { branch = "main" })
 
 -- Snippets {{{
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
+Plug("hrsh7th/cmp-vsnip")
+Plug("hrsh7th/vim-vsnip")
 -- }}}
 
-Plug('mfussenegger/nvim-dap')
-Plug('mfussenegger/nvim-lint')
-Plug('nvim-treesitter/nvim-treesitter', {
-        run = ':TSUpdate'
+Plug("mfussenegger/nvim-dap")
+Plug("mfussenegger/nvim-lint")
+Plug("nvim-treesitter/nvim-treesitter", {
+	run = ":TSUpdate",
 })
-Plug('ThePrimeagen/refactoring.nvim')
+Plug("ThePrimeagen/refactoring.nvim")
 -- }}}
 --
 -- Misc things {{{
-Plug('mhinz/vim-startify')
-Plug('majutsushi/tagbar')
-Plug('airblade/vim-gitgutter')
-Plug('tpope/vim-fugitive')
-Plug('f-person/git-blame.nvim')
-Plug('tpope/vim-commentary')
-Plug('christoomey/vim-tmux-navigator')
-Plug('nvim-lua/plenary.nvim')
+Plug("mhinz/vim-startify")
+Plug("majutsushi/tagbar")
+Plug("airblade/vim-gitgutter")
+Plug("tpope/vim-fugitive")
+Plug("f-person/git-blame.nvim")
+Plug("tpope/vim-commentary")
+Plug("christoomey/vim-tmux-navigator")
+Plug("nvim-lua/plenary.nvim")
 -- }}}
 --
 -- Own things {{{
-Plug('folke/neodev.nvim')
+Plug("folke/neodev.nvim")
 
 -- Plug('/projects/lszta/rg.nvim')
 
@@ -100,23 +99,17 @@ Plug('folke/neodev.nvim')
 Plug.ends()
 -- }}}
 
--- Airline {{{
-vim.g.airline_powerline_fonts = 1
-vim.g['airline#extensions#tabline#enabled'] = 1
-vim.g.airline_theme = 'gruvbox'
--- }}}
-
 -- packages config {{{
-require 'config.nvim_tree'
-require 'config.keybinds'
-require 'config.treesitter'
-require 'config.fzf'
-require 'config.lsp'
-require 'config.efm'
+require("config.lualine")
+require("config.nvim_tree")
+require("config.keybinds")
+require("config.treesitter")
+require("config.fzf")
+require("config.lsp")
+require("config.efm")
 -- }}}
 --
 -- require 'rg'.setup({})
 
 -- disable deprecations
-vim.deprecate = function () end
-
+vim.deprecate = function() end
