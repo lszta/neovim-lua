@@ -71,7 +71,17 @@ Plug("hrsh7th/cmp-vsnip")
 Plug("hrsh7th/vim-vsnip")
 -- }}}
 
+-- Dap {{{
+Plug("joakker/lua-json5", {
+  run = './install.sh'
+})
 Plug("mfussenegger/nvim-dap")
+Plug("nvim-neotest/nvim-nio")
+Plug("rcarriga/nvim-dap-ui")
+Plug("leoluz/nvim-dap-go")
+
+-- }}}
+
 Plug("mfussenegger/nvim-lint")
 Plug("nvim-treesitter/nvim-treesitter", {
 	run = ":TSUpdate",
@@ -107,6 +117,7 @@ require("config.treesitter")
 require("config.fzf")
 require("config.lsp")
 require("config.efm")
+require("config.dap")
 -- }}}
 --
 -- require 'rg'.setup({})

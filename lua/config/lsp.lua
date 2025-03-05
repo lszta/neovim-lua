@@ -45,7 +45,6 @@ local servers = {
   "tsserver",
   "gopls",
   "bashls",
-  "yamlls",
 }
 
 for _, lsp in ipairs(servers) do

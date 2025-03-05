@@ -14,4 +14,14 @@ M.noremap = function(lhs, rhs, opts)
   vim.keymap.set('n', lhs, rhs, _opts)
 end
 
+--- Bind key in noremap mode
+---
+--- @param keybinds table
+--- @param opts? vim.api.keyset.keymap
+M.noremap_many = function(keybinds, opts)
+  for _, entry in pairs(keybinds) do
+    M.noremap(entry[1], entry[2], opts)
+  end
+end
+
 return M
